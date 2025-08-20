@@ -1,10 +1,10 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { docs } from "@/.source";
-import { loader } from "fumadocs-core/source";
+import { docs } from '@/.source';
+import { loader } from 'fumadocs-core/source';
 
 export const source = loader({
-  baseUrl: "/docs",
+  baseUrl: '/docs',
   source: docs.toFumadocsSource(),
 });
