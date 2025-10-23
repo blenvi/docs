@@ -2,18 +2,16 @@
 # Documentation: https://docs.netlify.com/build/configure-builds/file-based-configuration/
 
 [build]
-  # Build command - only build docs and its dependencies, skip other apps
-  command = "cd apps/docs && npm run build"
+  # Build command for monorepo - run from repository root
+  # IMPORTANT: In Netlify UI, set Base directory to: (empty/root)
+  command = "npm install && cd apps/docs && npm run build"
 
-  # Publish directory - handled by Next.js plugin
-  publish = ".next"
-
-  # Package directory - where this app's source files are located
-  # Set this in Netlify UI: apps/docs
+  # Publish directory - relative to repository root
+  publish = "apps/docs/.next"
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_VERSION = "11.6.2"
+  NPM_VERSION = "10.9.2"
 
 # Ignore builds - only build when docs app or shared packages change
 [build.ignore]
