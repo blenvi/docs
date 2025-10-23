@@ -3,7 +3,7 @@
 
 [build]
   # Build command - only build docs and its dependencies, skip other apps
-  command = "npx turbo run build --filter=docs... --filter=!web --filter=!storybook --filter=!api --filter=!native"
+  command = "npx turbo run build --filter=docs... --filter=!web --filter=!api --filter=!native"
 
   # Publish directory relative to repository root
   publish = "apps/docs/.next"
