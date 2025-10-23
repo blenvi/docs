@@ -3,10 +3,10 @@
 
 [build]
   # Build command - only build docs and its dependencies, skip other apps
-  command = "npx turbo run build --filter=docs... --filter=!web --filter=!api --filter=!native"
+  command = "cd apps/docs && npm run build"
 
-  # Publish directory relative to repository root
-  publish = "apps/docs/.next"
+  # Publish directory - handled by Next.js plugin
+  publish = ".next"
 
   # Package directory - where this app's source files are located
   # Set this in Netlify UI: apps/docs
@@ -41,6 +41,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Plugin configuration for Next.js
-# [[plugins]]
-#   package = "@netlify/plugin-nextjs"
+# Essential Next.js Runtime Plugin for Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
