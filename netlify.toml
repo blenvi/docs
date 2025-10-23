@@ -1,0 +1,46 @@
+# Netlify Configuration for Docs App
+# Documentation: https://docs.netlify.com/build/configure-builds/file-based-configuration/
+
+[build]
+  # Build command runs in repository root
+  command = "npm run build --filter=docs"
+  
+  # Publish directory relative to repository root
+  publish = "apps/docs/.next"
+  
+  # Package directory - where this app's source files are located
+  # Set this in Netlify UI: apps/docs
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "11.6.2"
+
+# Ignore builds - only build when docs app or shared packages change
+[build.ignore]
+  command = '''
+    if [ "$CACHED_COMMIT_REF" = "" ]; then
+      echo "First build - building"
+      exit 1
+    fi
+    
+    # Check if docs app or shared packages changed
+    git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF apps/docs packages/typescript-config packages/eslint-config package.json turbo.json
+  '''
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Plugin configuration for Next.js
+# [[plugins]]
+#   package = "@netlify/plugin-nextjs"
