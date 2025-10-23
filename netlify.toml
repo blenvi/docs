@@ -4,10 +4,10 @@
 [build]
   # Build command runs in repository root
   command = "npm run build --filter=docs"
-  
+
   # Publish directory relative to repository root
   publish = "apps/docs/.next"
-  
+
   # Package directory - where this app's source files are located
   # Set this in Netlify UI: apps/docs
 
@@ -22,7 +22,7 @@
       echo "First build - building"
       exit 1
     fi
-    
+
     # Check if docs app or shared packages changed
     git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF apps/docs packages/typescript-config packages/eslint-config package.json turbo.json
   '''
