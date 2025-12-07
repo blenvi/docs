@@ -30,5 +30,9 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3"
+  },
+  "optionalDependencies": {
+    "@esbuild/linux-x64": "^0.24.2",
+    "lightningcss-linux-x64-gnu": "^1.29.0"
   }
 }
