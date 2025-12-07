@@ -33,6 +33,7 @@
   },
   "optionalDependencies": {
     "@esbuild/linux-x64": "^0.24.2",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.14",
     "lightningcss-linux-x64-gnu": "^1.29.0"
   }
 }
